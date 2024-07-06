@@ -21,7 +21,6 @@ import {
   sendUserDataToFirebase,
   updateUserAutoIncrementInFirebase,
 } from "./firebaseFunctions";
-import { recordReferral, getReferredUsersCount } from "./firebaseFunctions";
 
 export function App() {
   const balanceRef = useRef({ value: 0 });
@@ -35,30 +34,6 @@ export function App() {
   const [userId, setUserId] = useState<string | null>(null);
 
   const [isInitialLoad, setIsInitialLoad] = useState(true); // Flag to check if initial load is done
-  const referrerUserId = "user123";
-  const newUserId = "user456";
-  const [referralCount, setReferralCount] = useState<number>(0);
-
-  useEffect(() => {
-    // Record the referral when component mounts
-    recordReferral(referrerUserId, newUserId)
-      .then(() => {
-        console.log("Referral recorded successfully");
-      })
-      .catch((error) => {
-        console.error("Error recording referral:", error);
-      });
-
-    // Fetch the count of referred users
-    getReferredUsersCount(referrerUserId)
-      .then((count) => {
-        setReferralCount(count);
-        console.log(`User ${referrerUserId} has referred ${count} users.`);
-      })
-      .catch((error) => {
-        console.error("Error fetching referred users count:", error);
-      });
-  }, [referrerUserId, newUserId]);
 
   // Load state from localStorage on mount
   useEffect(() => {
@@ -567,9 +542,6 @@ export function App() {
           </div>
           {/* 4th row for Ref */}
           <div className="Ref_box">{userId && <Refer userId={userId} />}</div>
-          <p>
-            User {referrerUserId} has referred {referralCount} users.
-          </p>
           {/*down are overlay and container  */}
         </div>
       </div>
