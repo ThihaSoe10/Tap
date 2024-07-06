@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import "./ref.css";
-import { getReferredUsersCount } from '../../firebaseFunctions';
+import { getReferredUsersCount } from "../../firebaseFunctions";
 
 interface ReferProps {
   userId: string;
@@ -18,8 +18,8 @@ const Refer: React.FC<ReferProps> = ({ userId }) => {
     fetchReferredUsersCount();
   }, [userId]);
 
-  const inviteLink = `https://t.me/latesttest_bot?start=${userId}`;
-  const shareLink = `https://t.me/share/url?url=https://t.me/latesttest_bot?start=${userId}`;
+  const inviteLink = `https://t.me/test12er69_bot?start=${userId}`;
+  const shareLink = `https://t.me/share/url?url=https://t.me/test12er69_bot?start=${userId}`;
 
   const handleInviteClick = () => {
     window.Telegram.WebApp.openLink(shareLink);
@@ -27,14 +27,16 @@ const Refer: React.FC<ReferProps> = ({ userId }) => {
 
   return (
     <div>
-      <h2 className='reftitle'>Referral</h2>
-      <button className='referbutton' onClick={handleInviteClick}>Invite Friends +</button>
-      <p className='reflink'>Your invite link:</p>
-      <p className='refinvite'>{inviteLink}</p>
+      <h2 className="reftitle">Referral</h2>
+      <button className="referbutton" onClick={handleInviteClick}>
+        Invite Friends +
+      </button>
+      <p className="reflink">Your invite link:</p>
+      <p className="refinvite">{inviteLink}</p>
       {referredCount !== null ? (
-        <p className='refcount'>Users referred: {referredCount}</p>
+        <p className="refcount">Users referred: {referredCount}</p>
       ) : (
-        <p className='refcount'>Loading referred users count...</p>
+        <p className="refcount">Loading referred users count...</p>
       )}
     </div>
   );
