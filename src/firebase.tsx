@@ -1,16 +1,17 @@
-import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
-import { getDatabase } from 'firebase/database'; // Import the Realtime Database
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+import { getDatabase } from "firebase/database"; // Import the Realtime Database
 
 const firebaseConfig = {
-  apiKey: "AIzaSyChieGJYU9TGzBlUljWjVqYF2Erb3w2ncE",
-  authDomain: "test404track.firebaseapp.com",
-  databaseURL: "https://test404track-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "test404track",
-  storageBucket: "test404track.appspot.com",
-  messagingSenderId: "23062101949",
-  appId: "1:23062101949:web:b402111fc08f76cf90dcd4",
-  measurementId: "G-214Z3KHXPD"
+  apiKey: "AIzaSyCjkDIPRX28Qaa8q8bp26g8xshBihZy1SY",
+  authDomain: "bitbrawlofficial-f7a38.firebaseapp.com",
+  databaseURL:
+    "https://bitbrawlofficial-f7a38-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "bitbrawlofficial-f7a38",
+  storageBucket: "bitbrawlofficial-f7a38.appspot.com",
+  messagingSenderId: "806427531487",
+  appId: "1:806427531487:web:673c23533845dac351f16a",
+  measurementId: "G-N1T0Y2B4KK",
 };
 
 // Initialize Firebase
