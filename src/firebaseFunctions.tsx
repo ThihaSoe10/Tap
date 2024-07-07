@@ -1,5 +1,5 @@
 import { db } from "./firebase";
-import { ref, set, update, get, child } from "firebase/database";
+import { ref, set, update, get, child , push } from "firebase/database";
 
 // Function to send user data to Firebase
 export const sendUserDataToFirebase = (
@@ -26,21 +26,20 @@ export const updateUserAutoIncrementInFirebase = (
   });
 };
 
+export const storeReferral = async (userId: string, referredBy: string): Promise<void> => {
+  const referralsRef = ref(db, `referrals/${referredBy}`);
+  const newReferralRef = push(referralsRef);
+  await set(newReferralRef, { userId, timestamp: Date.now() });
+};
+
 export const getReferredUsersCount = async (userId: string): Promise<number> => {
-  if (!userId) return 0;
+  const referralsRef = ref(db, `referrals/${userId}`);
+  const snapshot = await get(referralsRef);
 
-  try {
-    const referralsRef = ref(db, "referrals/" + userId);
-    const snapshot = await get(referralsRef);
-
-    if (snapshot.exists()) {
-      const referralsData = snapshot.val();
-      return Object.keys(referralsData).length;
-    } else {
-      return 0;
-    }
-  } catch (error) {
-    console.error("Error fetching referred users count:", error);
+  if (snapshot.exists()) {
+    const referralsData = snapshot.val();
+    return Object.keys(referralsData).length;
+  } else {
     return 0;
   }
 };

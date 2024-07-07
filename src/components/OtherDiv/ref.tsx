@@ -1,3 +1,4 @@
+// Refer.tsx
 import React, { useEffect, useState } from "react";
 import "./ref.css";
 import { getReferredUsersCount } from "../../firebaseFunctions";
